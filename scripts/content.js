@@ -8,6 +8,10 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     await extranjero()
     await tipoDocumento()
     await numDocumento()
+    await fechaNacimiento()
+    await fechaEmision()
+    await nacionalidad()
+    await fechaUltimoMovimiento()
   }
 })
 
@@ -66,3 +70,49 @@ async function numDocumento() {
   document.querySelector('button.mat-fab').click()
 }
 
+async function fechaNacimiento() {
+  const input = document.querySelector("input[formcontrolname=dFechaNacimiento]")
+
+  if(input === null || input.value !== ''){
+    return;
+  }
+
+  input.value = '25/05/1986'
+  input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
+}
+
+async function fechaEmision() {
+  const input = document.querySelector("input[formcontrolname=sFechaEmision]")
+
+  if(input === null || input.value !== ''){
+    return;
+  }
+
+  input.value = '07/06/2022'
+  input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
+}
+
+async function nacionalidad() {
+  const matselect = document.querySelector("mat-select[formcontrolname=sIdPais]")
+
+  if(matselect === null || matselect.querySelector('.mat-select-placeholder') === null){
+    return;
+  }
+
+  matselect.click()
+  waitFor(500);
+
+  const option = Array.from(document.querySelectorAll('.mat-option-text')).find(el => el.innerText === 'EE.UU');
+  option.click();
+}
+
+async function fechaUltimoMovimiento() {
+  const input = document.querySelector("input[formcontrolname=sFechaUltimoMovimiento]")
+
+  if(input === null || input.value !== ''){
+    return;
+  }
+
+  input.value = '14/08/2022'
+  input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
+}
