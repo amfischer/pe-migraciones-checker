@@ -20,11 +20,11 @@
     }
   ],
   "commands": {
-    "open-migraciones-page": {
+    "migraciones-page-interaction": {
       "suggested_key": "Ctrl+Home",
-      "description": "Opens the migraciones website"
+      "description": "Opens the migraciones website, and fills login page for CE application"
     },
-    "page-interaction": {
+    "test-interaction": {
       "suggested_key": "Ctrl+Shift+End",
       "description": "Interacts with migraciones website"
     }
