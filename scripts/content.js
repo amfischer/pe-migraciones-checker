@@ -55,6 +55,7 @@ async function tipoDocumento() {
       opt.click()
     }
   });
+  waitFor(500)
 }
 
 async function numDocumento() {
@@ -68,6 +69,7 @@ async function numDocumento() {
   input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
   waitFor(500);
   document.querySelector('button.mat-fab').click()
+  waitFor(500)
 }
 
 async function fechaNacimiento() {
@@ -77,8 +79,19 @@ async function fechaNacimiento() {
     return;
   }
 
-  input.value = '25/05/1986'
-  input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
+  input.parentElement.parentElement.querySelector('button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-period-button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-previous-button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="1986"]').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="01/05/1986"]').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="25/05/1986"]').click()
+  waitFor(500);
+
 }
 
 async function fechaEmision() {
@@ -88,8 +101,16 @@ async function fechaEmision() {
     return;
   }
 
-  input.value = '07/06/2022'
-  input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
+  input.parentElement.parentElement.querySelector('button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-period-button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="2022"]').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="01/06/2022"]').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="07/06/2022"]').click()
+  waitFor(500);
 }
 
 async function nacionalidad() {
@@ -101,9 +122,10 @@ async function nacionalidad() {
 
   matselect.click()
   waitFor(500);
-
+  
   const option = Array.from(document.querySelectorAll('.mat-option-text')).find(el => el.innerText === 'EE.UU');
   option.click();
+  waitFor(500);
 }
 
 async function fechaUltimoMovimiento() {
@@ -113,6 +135,13 @@ async function fechaUltimoMovimiento() {
     return;
   }
 
-  input.value = '14/08/2022'
-  input.dispatchEvent(new Event('input', {bubbles: true, cancelable: true}));
+  input.parentElement.parentElement.querySelector('button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-period-button').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="2022"]').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="01/08/2022"]').click()
+  waitFor(250);
+  document.querySelector('.mat-calendar-body-cell[aria-label="14/08/2022"]').click()
 }
